@@ -151,6 +151,8 @@ namespace ofxIlda {
                     //            }
                 }
             }
+            
+            /*
             if(params.draw.points) {
                 glPointSize(5);
                 for(int i=0; i<processedPolys.size(); i++) {
@@ -164,10 +166,12 @@ namespace ofxIlda {
                         //                Point &p = data[i];
                         //                ofSetColor(p.r * 255, p.g * 255, p.b * 255, p.a * 255);
                         glVertex2f(p.x, p.y);
+
                     }
                     glEnd();
                 }
             }
+            */
             
             ofPopMatrix();
             ofPopStyle();
