@@ -38,8 +38,8 @@ namespace ofxIlda {
                 struct {
                     bool doFlipX;
                     bool doFlipY;
-                    ofVec2f offset;
-                    ofVec2f scale;
+                    ofVec3f offset;
+                    ofVec3f scale;
                 } transform;
             } output;
         } params;
@@ -74,8 +74,8 @@ namespace ofxIlda {
 
             params.output.transform.doFlipX = false;
             params.output.transform.doFlipY = false;
-            params.output.transform.offset = ofVec2f(0, 0);
-            params.output.transform.scale = ofVec2f(1, 1);
+            params.output.transform.offset = ofVec3f(0, 0);
+            params.output.transform.scale = ofVec3f(1, 1);
         }
 
 
@@ -210,12 +210,12 @@ namespace ofxIlda {
         }
 
         //--------------------------------------------------------------
-        Poly& addPoly(const vector<ofVec2f> points) {
+        Poly& addPoly(const vector<ofVec3f> points) {
             return addPoly(Poly(points));
         }
 
         //--------------------------------------------------------------
-        Poly& addPoly(const vector<ofVec2f> points, ofFloatColor color) {
+        Poly& addPoly(const vector<ofVec3f> points, ofFloatColor color) {
             return addPoly(Poly(points, color));
         }
 
@@ -285,7 +285,7 @@ namespace ofxIlda {
         }
 
         //--------------------------------------------------------------
-        ofVec2f transformPoint(ofVec2f p) const {
+        ofVec3f transformPoint(ofVec3f p) const {
             // flip
             if(params.output.transform.doFlipX) p.x = 1 - p.x;
             if(params.output.transform.doFlipY) p.y = 1 - p.y;
@@ -293,9 +293,9 @@ namespace ofxIlda {
             // scale
 						auto len = params.output.transform.scale.length();
             if( (len*len) > 0 ) {
-                p -= ofVec2f(0.5, 0.5);
+                p -= ofVec3f(0.5, 0.5);
                 p *= params.output.transform.scale;
-                p += ofVec2f(0.5, 0.5);
+                p += ofVec3f(0.5, 0.5);
             }
 
             // offset
@@ -329,8 +329,8 @@ namespace ofxIlda {
 
                 if(poly.size() > 0) {
 
-                    ofVec2f startPoint = transformPoint(poly.getVertices().front());
-                    ofVec2f endPoint = transformPoint(poly.getVertices().back());
+                    ofVec3f startPoint = transformPoint(poly.getVertices().front());
+                    ofVec3f endPoint = transformPoint(poly.getVertices().back());
 
                     // blanking at start
                     for(int n=0; n<params.output.blankCount; n++) {
