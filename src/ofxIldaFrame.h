@@ -292,7 +292,7 @@ namespace ofxIlda {
 
             // scale
 						auto len = params.output.transform.scale.length();
-            if(glm::pow(len, 2) > 0) {
+            if(len*len) > 0) {
                 p -= ofVec2f(0.5, 0.5);
                 p *= params.output.transform.scale;
                 p += ofVec2f(0.5, 0.5);
