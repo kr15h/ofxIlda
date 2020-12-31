@@ -23,10 +23,10 @@ namespace ofxIlda {
 
         Poly(const ofPolyline& polyline, ofFloatColor color) : ofPolyline(polyline), color(color) {}
 
-		    Poly(const vector<glm::vec2>& verts) : ofPolyline(verts), color(ofFloatColor(1, 1, 1, 1)) {}
+		    Poly(const vector<ofVec2f>& verts) : ofPolyline(verts), color(ofFloatColor(1, 1, 1, 1)) {}
 
-		    Poly(const vector<glm::vec2>& verts, ofFloatColor color) : ofPolyline(verts), color(color) {}
-        
+		    Poly(const vector<ofVec2f>& verts, ofFloatColor color) : ofPolyline(verts), color(color) {}
+
         void setFromPolyline(const ofPolyline& polyline) { ofFloatColor tmpColor = color; *this = polyline; color = tmpColor; }
 	};
 }
