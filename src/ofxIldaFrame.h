@@ -74,8 +74,8 @@ namespace ofxIlda {
 
             params.output.transform.doFlipX = false;
             params.output.transform.doFlipY = false;
-            params.output.transform.offset.set(0, 0);
-            params.output.transform.scale.set(1, 1);
+            params.output.transform.offset = glm::vec2(0, 0);
+            params.output.transform.scale = glm::vec2(1, 1);
         }
 
 
