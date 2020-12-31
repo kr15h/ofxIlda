@@ -291,7 +291,8 @@ namespace ofxIlda {
             if(params.output.transform.doFlipY) p.y = 1 - p.y;
 
             // scale
-            if(params.output.transform.scale.lengthSquared() > 0) {
+						auto len = glm::length(params.output.transform.scale);
+            if(glm::pow(len, 2) > 0) {
                 p -= ofPoint(0.5, 0.5);
                 p *= params.output.transform.scale;
                 p += ofPoint(0.5, 0.5);
