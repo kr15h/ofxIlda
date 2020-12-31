@@ -38,8 +38,8 @@ namespace ofxIlda {
                 struct {
                     bool doFlipX;
                     bool doFlipY;
-                    glm::vec2 offset;
-                    glm::vec2 scale;
+                    ofVec2f offset;
+                    ofVec2f scale;
                 } transform;
             } output;
         } params;
@@ -74,8 +74,8 @@ namespace ofxIlda {
 
             params.output.transform.doFlipX = false;
             params.output.transform.doFlipY = false;
-            params.output.transform.offset = glm::vec2(0, 0);
-            params.output.transform.scale = glm::vec2(1, 1);
+            params.output.transform.offset = ofVec2f(0, 0);
+            params.output.transform.scale = ofVec2f(1, 1);
         }
 
 
@@ -210,12 +210,12 @@ namespace ofxIlda {
         }
 
         //--------------------------------------------------------------
-        Poly& addPoly(const vector<glm::vec2> points) {
+        Poly& addPoly(const vector<ofVec2f> points) {
             return addPoly(Poly(points));
         }
 
         //--------------------------------------------------------------
-        Poly& addPoly(const vector<glm::vec2> points, ofFloatColor color) {
+        Poly& addPoly(const vector<ofVec2f> points, ofFloatColor color) {
             return addPoly(Poly(points, color));
         }
 
