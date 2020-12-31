@@ -285,17 +285,17 @@ namespace ofxIlda {
         }
 
         //--------------------------------------------------------------
-        ofPoint transformPoint(ofPoint p) const {
+        ofVec2f transformPoint(ofVec2f p) const {
             // flip
             if(params.output.transform.doFlipX) p.x = 1 - p.x;
             if(params.output.transform.doFlipY) p.y = 1 - p.y;
 
             // scale
-						auto len = glm::length(params.output.transform.scale);
+						auto len = params.output.transform.scale.length();
             if(glm::pow(len, 2) > 0) {
-                p -= ofPoint(0.5, 0.5);
+                p -= ofVec2f(0.5, 0.5);
                 p *= params.output.transform.scale;
-                p += ofPoint(0.5, 0.5);
+                p += ofVec2f(0.5, 0.5);
             }
 
             // offset
@@ -329,8 +329,8 @@ namespace ofxIlda {
 
                 if(poly.size() > 0) {
 
-                    ofPoint startPoint = transformPoint(poly.getVertices().front());
-                    ofPoint endPoint = transformPoint(poly.getVertices().back());
+                    ofVec2f startPoint = transformPoint(poly.getVertices().front());
+                    ofVec2f endPoint = transformPoint(poly.getVertices().back());
 
                     // blanking at start
                     for(int n=0; n<params.output.blankCount; n++) {
